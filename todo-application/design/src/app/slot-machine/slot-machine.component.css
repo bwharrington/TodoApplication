@@ -1,0 +1,12 @@
+.slot-container {
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    vertical-align: middle;
+    position: relative;
+    height: 50px;
+    padding: 1px;
+    align-items: center;
+    box-sizing: border-box;
+}

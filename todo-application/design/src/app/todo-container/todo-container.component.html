@@ -1,0 +1,55 @@
+<div [style.background]="getBackgroundColor()" [style.width]="getBackgroundWidth()" [ngStyle]="{'height' : '700px'}">
+    <div [style.background]="getBackgroundImage()" [style.width]="getBackgroundWidth()" [ngStyle]="{'height' : '225px'}">
+        <div class="todo-padding">
+            <div>
+                <div class="todo-container todo-text">
+                    <div>T O D O</div>
+                    <div>
+                        <svg *ngIf="!isDarkMode" (click)="toggleMode()" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                            <path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/>
+                </svg>
+                        <svg *ngIf="isDarkMode" (click)="toggleMode()" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                            <path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/>
+                </svg>
+                    </div>
+                </div>
+                <div class="create-task-container" [class.task-background-dark]="isDarkMode" [class.task-background-light]="!isDarkMode">
+                    <div class="create-task-container-padding">
+                        <div class="complete-btn-container">
+                            <input [class.task-background-dark]="isDarkMode" [class.task-background-light]="!isDarkMode" class="complete-btn-unchecked" (click)="saveTask($event)">
+                        </div>
+                        <input type="text" [class.task-background-dark]="isDarkMode" [class.task-background-light]="!isDarkMode" [class.input-typing-text-dark]="isDarkMode" [class.input-typing-text-light]="!isDarkMode" class="create-task-input text-format" id="inputAddTask" name="inputAddTask" (keyup)="saveTask($event)" placeholder="Create a new todo...">
+                    </div>
+                </div>
+                <div>
+                    <todo-task-list [isDarkMode]="this.isDarkMode" (getTaskCount)="getTaskCountFromTaskList($event)">
+                    </todo-task-list>
+                </div>
+                <div>
+                    <div [class.task-background-dark]="isDarkMode" [class.task-background-light]="!isDarkMode" [class.text-color-dark]="isDarkMode" [class.text-color-light]="!isDarkMode" class="task-detail text-format">
+                        <div class="footer-padding">
+                            <div>{{taskCount$}} items left</div>
+                        </div>
+                        <div *ngIf="!isMobile" class="footer-detail">
+                            <div class="footer-button" (click)="allTaskFilter()">All</div>
+                            <div class="footer-button" (click)="activeTaskFilter()">Active</div>
+                            <div class="footer-button" (click)="completedTaskFilter()">Completed</div>
+                        </div>
+                        <div class="footer-padding">
+                            <div (click)="clearCompleted()">Clear Completed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="isMobile" [class.task-background-dark]="isDarkMode" [class.task-background-light]="!isDarkMode" [class.text-color-dark]="isDarkMode" [class.text-color-light]="!isDarkMode" class="task-footer text-format">
+                <div class="footer-detail">
+                    <div class="task-footer-buttons">
+                        <div class="footer-button" (click)="allTaskFilter()">All</div>
+                        <div class="footer-button" (click)="activeTaskFilter()">Active</div>
+                        <div class="footer-button" (click)="completedTaskFilter()">Completed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

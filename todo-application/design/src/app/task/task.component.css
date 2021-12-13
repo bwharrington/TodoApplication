@@ -1,0 +1,44 @@
+.task-container {
+    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    vertical-align: middle;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    padding: 1px;
+    align-items: center;
+    border-bottom: .5px solid hsl(234, 39%, 85%);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.task-text-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+.complete-btn-checked {
+    background: linear-gradient(to bottom right, hsl(192, 100%, 67%) 0%, hsl(280, 87%, 65%) 50%);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid hsl(234, 11%, 52%);
+    cursor: pointer;
+}
+
+
+.delete-btn {
+    width: 18px;
+    height: 18px;
+    padding: 10px;
+    vertical-align: middle;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+}

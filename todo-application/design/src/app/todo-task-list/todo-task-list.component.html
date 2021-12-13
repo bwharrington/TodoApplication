@@ -1,0 +1,9 @@
+<div *ngFor = "let task of filteredTaskData">
+    <task [name] = "task.name"
+          [isComplete] = "task.isComplete"
+          [isActive]   = "task.isActive"
+          [isDarkMode] = "this.isDarkMode"
+          (deletedTask)="onTaskDeleted(task)"
+          (markAsComplete)="onMarkAsCompleted(task)">
+    </task>
+</div>

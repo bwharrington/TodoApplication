@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+.center-application {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.task-text {
+    font-family: Josefin Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 23px;
+    bottom:0;
+}
+
+.input-typing-text-dark  {
+    color : hsl(234, 39%, 85%) ;
+       /* very-dark-greyish-blue */
+}
+
+.input-typing-text-light {
+    color: hsl(235, 19%, 35%);
+     /* light greyish blue */
+}
+
+
+.text-format {
+    font-family: Josefin Sans;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 23px;
+}
+
+.task-text-bold {
+    font-family: Josefin Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 23px;
+}
+
+.text-color-light {
+    color: hsl(236, 9%, 61%)
+}
+
+.text-color-dark {
+    color: hsl(234, 39%, 85%)
+}
+
+.complete-btn-color {
+    background: linear-gradient(to bottom right, hsl(192, 100%, 67%) 0%, hsl(280, 87%, 65%) 50%);
+}
+
+.complete-btn-unchecked {
+    height: 20px;
+    width: 20px;
+    background-color : hsl(237, 14%, 26%);
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid hsl(234, 11%, 52%);
+    cursor: pointer;
+  }
+
+  .complete-btn-container {
+    padding: 5px;
+}
+
+.app-background {
+    background-image: url("/todo-application/src/assets/images/bg-desktop-dark.jpg");
+}
+
+.task-background-dark  {
+    background-color : hsl(233, 14%, 35%) /*very-dark-grayish-blue*/
+}
+
+
+.task-background-light {
+    background-color : hsl(0, 0%, 98%) /* Very Light Gray:*/
+}
