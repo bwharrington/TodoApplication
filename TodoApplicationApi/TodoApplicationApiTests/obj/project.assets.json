@@ -7281,8 +7281,8 @@
     },
     "TodoApplicationApi/1.0.0": {
       "type": "project",
-      "path": "../SlotMachineApi/TodoApplicationApi.csproj",
-      "msbuildProject": "../SlotMachineApi/TodoApplicationApi.csproj"
+      "path": "../TodoApplicationApi/TodoApplicationApi.csproj",
+      "msbuildProject": "../TodoApplicationApi/TodoApplicationApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7335,6 +7335,9 @@
           "projectReferences": {
             "C:\\Dev Work\\TodoApplication\\TodoApplicationApi\\SlotMachineApi\\TodoApplicationApi.csproj": {
               "projectPath": "C:\\Dev Work\\TodoApplication\\TodoApplicationApi\\SlotMachineApi\\TodoApplicationApi.csproj"
+            },
+            "C:\\Dev Work\\TodoApplication\\TodoApplicationApi\\TodoApplicationApi\\TodoApplicationApi.csproj": {
+              "projectPath": "C:\\Dev Work\\TodoApplication\\TodoApplicationApi\\TodoApplicationApi\\TodoApplicationApi.csproj"
             }
           }
         }

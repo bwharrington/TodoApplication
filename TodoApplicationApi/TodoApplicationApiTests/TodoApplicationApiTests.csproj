@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SlotMachineApi\TodoApplicationApi.csproj" />
+    <ProjectReference Include="..\TodoApplicationApi\TodoApplicationApi.csproj" />
   </ItemGroup>
 
 </Project>

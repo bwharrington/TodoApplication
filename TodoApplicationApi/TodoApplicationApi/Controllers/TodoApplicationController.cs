@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using TodoApplicationApi.Repository;
 
 namespace TodoApplicationApi.Controllers
 {
@@ -9,6 +10,7 @@ namespace TodoApplicationApi.Controllers
     public class TodoApplicationController : ControllerBase
     {
         private readonly ILogger<TodoApplicationController> _logger;
+        private static TaskRepository taskRepository = new();
 
         public TodoApplicationController(ILogger<TodoApplicationController> logger)
         {
@@ -17,17 +19,13 @@ namespace TodoApplicationApi.Controllers
 
         [HttpGet]
         [Route("GetTodoList")]
-        public ActionResult<List<Todo>> GetTodoList()
+        public ActionResult GetTodoList()
         {
-            _logger.LogInformation("");
-            _logger.LogInformation("");
-            TodoApplicationImpl todoImpl = new TodoApplicationImpl();
-
-            List<Todo> todoList = null;
             try
             {
-                //todoList = todoImpl.doSomething(credits);
-            } catch(Exception ex)
+                return Ok(taskRepository.GetTasks());
+            } 
+            catch(Exception ex)
             {
                 _logger.LogError("Error in GetTodoList");
                 _logger.LogError(ex.Message);
@@ -35,8 +33,67 @@ namespace TodoApplicationApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
             
-            return Ok(todoList);
         }
 
+        [HttpPost]
+        public ActionResult Post(Todo task)
+        {
+            try
+            {
+                taskRepository.addTodo(task);
+                return StatusCode(StatusCodes.Status200OK);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error : " + ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult Put(int id, ITodo task)
+        {
+            try
+            {
+                if (task == null)
+                {
+                    return BadRequest("Query ID doesn't matches the object property");
+                }
+
+                // Save Task work here.
+
+                return Ok(task);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,"Error : " + ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                var removedCount = taskRepository.deleteTodo(id);
+                if(removedCount > 0)
+                {
+                    return Ok($"Successfully deleted : {id}");
+                } 
+                else if (removedCount == 0)
+                {
+                    return NotFound($"couldn't find todo {id}");
+                } 
+                else
+                {
+                    StatusCode(StatusCodes.Status500InternalServerError, "Error something meaning full.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error : " + ex.Message);
+            }
+
+            return NotFound($"couldn't find todo {id}");
+        }
     }
 }
